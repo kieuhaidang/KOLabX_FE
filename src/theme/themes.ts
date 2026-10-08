@@ -66,11 +66,11 @@ export const THEMES: Theme[] = [
       deep: "#140a26",
       base: "#040114",
       surface: "#0d071d",
-      shell: ["#050115", "#0a022a", "#150626"],
+      shell: ["#06030b", "#140a26", "#1d1040"],
       onPrimary: "#ffffff",
     },
     gradient: "linear-gradient(135deg, #7a55c4 0%, #582c96 50%, #361a66 100%)",
-    gradientStrong: "linear-gradient(110deg, #040114 0%, #140a26 35%, #48267f 72%, #8a76b8 100%)",
+    gradientStrong: "linear-gradient(110deg, #06030b 0%, #1d1040 48%, #3d2075 100%)",
   },
   {
     id: "dai-duong",
