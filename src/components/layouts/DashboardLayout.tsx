@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import { useAuth } from "../auth/AuthProvider";
 import { adminNavigationItems } from "../admin/adminNavigation";
+import { ThemeSwitcher } from "../../theme/ThemeSwitcher";
 
 interface DashboardLayoutProps {
   children: ReactNode;
@@ -98,7 +99,7 @@ export function DashboardLayout({ children, navigationItems: customItems, role }
             </div>
 
             <div className="flex items-center gap-3">
-
+              <ThemeSwitcher />
 
               <div className="relative">
                 <button

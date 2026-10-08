@@ -167,8 +167,8 @@ export function MarketerDashboard() {
                 <AreaChart data={chartData}>
                   <defs>
                     <linearGradient id="colorAmount" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#FF3300" stopOpacity={0.1} />
-                      <stop offset="95%" stopColor="#FF3300" stopOpacity={0} />
+                      <stop offset="5%" stopColor="var(--kl-primary)" stopOpacity={0.1} />
+                      <stop offset="95%" stopColor="var(--kl-primary)" stopOpacity={0} />
                     </linearGradient>
                   </defs>
                   <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
@@ -183,7 +183,7 @@ export function MarketerDashboard() {
                     contentStyle={{ borderRadius: "16px", border: "none", boxShadow: "0 10px 15px -3px rgb(0 0 0 / 0.1)" }}
                     formatter={(value: number) => [formatCurrency(value), "Số tiền"]}
                   />
-                  <Area type="monotone" dataKey="amount" stroke="#FF3300" strokeWidth={3} fillOpacity={1} fill="url(#colorAmount)" />
+                  <Area type="monotone" dataKey="amount" stroke="var(--kl-primary)" strokeWidth={3} fillOpacity={1} fill="url(#colorAmount)" />
                 </AreaChart>
               </ResponsiveContainer>
             </div>

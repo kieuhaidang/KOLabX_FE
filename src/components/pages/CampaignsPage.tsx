@@ -245,7 +245,7 @@ type AiCampaignDraftState = {
   };
 };
 
-const analyticsPalette = ["#FF3300", "#008080", "#38BDF8", "#10B981", "#8B5CF6", "#F59E0B"];
+const analyticsPalette = ["var(--kl-primary)", "var(--kl-accent)", "#38BDF8", "#10B981", "#8B5CF6", "#F59E0B"];
 
 function normalizeText(value: string) {
   return value
@@ -555,7 +555,7 @@ function LineChartCard({ title, data, dataKey, xKey, color, variant = "line", yT
   );
 }
 
-function BarChartCard({ title, data, xKey, dataKey, color = "#FF3300", layout = "horizontal", yTickFormatter, colors }: { title: string; data: any[]; xKey: string; dataKey: string; color?: string; layout?: "horizontal" | "vertical"; yTickFormatter?: any; colors?: string[] }) {
+function BarChartCard({ title, data, xKey, dataKey, color = "var(--kl-primary)", layout = "horizontal", yTickFormatter, colors }: { title: string; data: any[]; xKey: string; dataKey: string; color?: string; layout?: "horizontal" | "vertical"; yTickFormatter?: any; colors?: string[] }) {
   const isEmpty = data.length === 0;
   return (
     <ChartCard title={title} isEmpty={isEmpty}>
@@ -590,7 +590,7 @@ function MarketerCampaignAnalytics({ campaigns }: { campaigns: Campaign[] }) {
     <div className="grid gap-6 lg:grid-cols-2">
       <DonutChartCard title="Trạng thái chiến dịch" data={statusData} centerValue={String(campaigns.length)} centerLabel="Tổng cộng" />
       <BarChartCard title="Ngân sách theo nền tảng" data={platformData} xKey="platform" dataKey="budget" yTickFormatter={formatCurrencyShort} />
-      <LineChartCard title="Xu hướng ngân sách" data={trendData} xKey="month" dataKey="budget" color="#FF3300" variant="area" yTickFormatter={formatCurrencyShort} />
+      <LineChartCard title="Xu hướng ngân sách" data={trendData} xKey="month" dataKey="budget" color="var(--kl-primary)" variant="area" yTickFormatter={formatCurrencyShort} />
       <BarChartCard title="Tiến độ dự án lớn" data={progressData} xKey="name" dataKey="progress" layout="vertical" color="#10B981" yTickFormatter={(v: any) => `${v}%`} />
     </div>
   );
@@ -1224,7 +1224,7 @@ export function CampaignsPage() {
                             {c.productImages && c.productImages.length > 0 ? (
                               <img src={c.productImages[0]} alt={c.productName} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                             ) : (
-                              <div className="w-full h-full bg-gradient-to-br from-[#1E3B8E]/20 to-[#1E3B8E]/5 flex items-center justify-center text-[#1E3B8E]/40">
+                              <div className="w-full h-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center text-primary/40">
                                 <Rocket size={40} className="group-hover:rotate-12 transition-transform" />
                               </div>
                             )}
@@ -1342,7 +1342,7 @@ export function CampaignsPage() {
                <div className="space-y-2">
                  <label className="text-sm font-bold text-slate-700">Lĩnh vực</label>
                  <select 
-                   className="w-full h-11 border border-slate-200 rounded-xl px-3 bg-slate-50 text-sm focus:ring-[#1E3B8E]" 
+                   className="w-full h-11 border border-slate-200 rounded-xl px-3 bg-slate-50 text-sm focus:ring-primary" 
                    value={formData.category} 
                    onChange={e => setFormData({...formData, category: e.target.value})}
                  >
@@ -1352,7 +1352,7 @@ export function CampaignsPage() {
                <div className="space-y-2">
                  <label className="text-sm font-bold text-slate-700">Nền tảng</label>
                  <select 
-                   className="w-full h-11 border border-slate-200 rounded-xl px-3 bg-slate-50 text-sm focus:ring-[#1E3B8E]" 
+                   className="w-full h-11 border border-slate-200 rounded-xl px-3 bg-slate-50 text-sm focus:ring-primary" 
                    value={formData.platform} 
                    onChange={e => setFormData({...formData, platform: e.target.value})}
                  >

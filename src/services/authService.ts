@@ -8,6 +8,7 @@ export type AuthUser = {
   email: string;
   role: UserRole;
   isVerified: boolean;
+  themePreference?: string | null;
 };
 
 export function getHomePathForRole(role: UserRole) {
@@ -101,6 +102,14 @@ export async function getCurrentUser(): Promise<AuthUser> {
 
   localStorage.setItem(AUTH_USER_KEY, JSON.stringify(response.user));
   return response.user;
+}
+
+export async function updateThemePreference(themeId: string): Promise<{ themePreference: string }> {
+  return apiRequest<{ themePreference: string }>("/api/auth/me/theme", {
+    method: "PATCH",
+    body: JSON.stringify({ themeId }),
+    auth: true,
+  });
 }
 
 export async function forgotPassword(email: string): Promise<{ message: string }> {

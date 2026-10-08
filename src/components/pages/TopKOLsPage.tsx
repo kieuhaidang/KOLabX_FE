@@ -45,6 +45,8 @@ import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import { formatThousands, parseThousands } from "../../utils/numberFormat";
+import { getActiveTheme } from "../../theme/applyTheme";
+import { useTheme } from "../../theme/ThemeProvider";
 
 type ViewMode = "grid" | "table";
 type TabMode = "discovery" | "shortlist";
@@ -152,6 +154,7 @@ function formatCurrency(value: number) {
 }
 
 function buildInitialAvatar(name: string) {
+  const avatarTheme = getActiveTheme();
   const initials = name
     .trim()
     .split(/\s+/)
@@ -164,8 +167,8 @@ function buildInitialAvatar(name: string) {
     <svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160">
       <defs>
         <linearGradient id="top-kol-avatar-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#FF3300" />
-          <stop offset="100%" stop-color="#008080" />
+          <stop offset="0%" stop-color="${avatarTheme.colors.primary}" />
+          <stop offset="100%" stop-color="${avatarTheme.colors.accent}" />
         </linearGradient>
       </defs>
       <rect width="160" height="160" rx="80" fill="url(#top-kol-avatar-gradient)" />
@@ -326,7 +329,7 @@ function TopKolCapabilityChip({
           borderColor: "#C7D2FE",
           color: "#312E81",
           iconBackground: "#EEF2FF",
-          iconColor: "#FF3300",
+          iconColor: "var(--kl-primary)",
         };
 
   return (
@@ -365,7 +368,7 @@ function TopKolKpiCard({ label, value, tone = "default" }: { label: string; valu
           : "#F8FAFC";
 
   const cardBg = isDark
-    ? "bg-gradient-to-br from-primary/20 to-slate-900/50 border-primary/40 text-white shadow-[0_0_15px_rgba(255,51,0,0.15)]"
+    ? "bg-gradient-to-br from-primary/20 to-slate-900/50 border-primary/40 text-white shadow-[0_0_15px_rgb(var(--kl-primary-rgb)/0.15)]"
     : "bg-slate-900/60 border-slate-800 text-slate-100";
 
   return (
@@ -556,6 +559,7 @@ export function TopKOLsPage() {
     return () => observer.disconnect();
   }, [loading, activeTab, viewMode]);
 
+  const { theme: activeTheme } = useTheme();
   const topKOLs = useMemo((): TopKolItem[] => {
     const profiles = runtimeProfiles || [];
     const baseList: TopKolItem[] = profiles.map((profile, index) => {
@@ -645,7 +649,7 @@ export function TopKOLsPage() {
     }
 
     return finalList.slice(0, 15);
-  }, [runtimeProfiles]);
+  }, [runtimeProfiles, activeTheme.id]);
 
   const filteredKols = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
@@ -1064,12 +1068,12 @@ export function TopKOLsPage() {
                        {isMarketer ? (
                          <button
                             onClick={() => { setSelectedKolId(null); setInvitingKol(selectedKol); }}
-                            className="w-full sm:w-auto px-8 py-4 bg-primary text-white rounded-2xl font-black uppercase tracking-widest hover:bg-primary-hover hover:scale-102 hover:shadow-[0_0_20px_rgba(255,51,0,0.3)] transition-all duration-300 shadow-xl shadow-primary/10"
+                            className="w-full sm:w-auto px-8 py-4 bg-primary text-white rounded-2xl font-black uppercase tracking-widest hover:bg-primary-hover hover:scale-102 hover:shadow-[0_0_20px_rgb(var(--kl-primary-rgb)/0.3)] transition-all duration-300 shadow-xl shadow-primary/10"
                           >
                             Mời hợp tác
                           </button>
                        ) : (
-                          <Link to="/login?role=marketer" className="w-full sm:w-auto px-8 py-4 bg-primary text-white rounded-2xl font-black uppercase tracking-widest hover:bg-primary-hover hover:scale-102 hover:shadow-[0_0_20px_rgba(255,51,0,0.3)] transition-all duration-300 shadow-xl shadow-primary/10 text-center">Mời hợp tác</Link>
+                          <Link to="/login?role=marketer" className="w-full sm:w-auto px-8 py-4 bg-primary text-white rounded-2xl font-black uppercase tracking-widest hover:bg-primary-hover hover:scale-102 hover:shadow-[0_0_20px_rgb(var(--kl-primary-rgb)/0.3)] transition-all duration-300 shadow-xl shadow-primary/10 text-center">Mời hợp tác</Link>
                        )}
                      </div>
                   </div>

@@ -115,8 +115,8 @@ export function PricingPage() {
           50% { transform: translateY(-4px); }
         }
         @keyframes pricingGlow {
-          0%, 100% { box-shadow: 0 12px 30px -22px rgba(255, 51, 0, 0.18); }
-          50% { box-shadow: 0 20px 40px -20px rgba(255, 51, 0, 0.32); }
+          0%, 100% { box-shadow: 0 12px 30px -22px rgb(var(--kl-primary-rgb)/0.18); }
+          50% { box-shadow: 0 20px 40px -20px rgb(var(--kl-primary-rgb)/0.32); }
         }
         @keyframes pricingShine {
           0% { transform: translateX(-140%); opacity: 0; }
@@ -264,7 +264,7 @@ export function PricingPage() {
               <div
                 className="pricing-sheen pricing-glow rounded-[32px] p-8 text-white shadow-xl shadow-primary/20"
                 style={{
-                  backgroundColor: "#FF3300",
+                  backgroundColor: "var(--kl-primary)",
                 }}
               >
                 <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-white">
@@ -343,7 +343,7 @@ export function PricingPage() {
             <div
               className="pricing-sheen pricing-glow rounded-[32px] p-8 text-white shadow-xl shadow-primary/20"
               style={{
-                backgroundColor: "#FF3300",
+                backgroundColor: "var(--kl-primary)",
               }}
             >
               <p className="text-sm font-bold uppercase tracking-[0.18em] text-blue-100/80">KOL/KOC nhận được gì?</p>

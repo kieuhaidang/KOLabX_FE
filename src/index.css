@@ -1,13 +1,21 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #f4511e;
-  --color-primary-hover: #ff5722;
-  --color-primary-foreground: #ffffff;
-  
-  --color-secondary: #0d4f4b;
-  --color-secondary-hover: #062b29;
+  /* Màu thương hiệu lấy từ theme đang chọn (src/theme/themes.ts → applyTheme.ts).
+     Không viết mã màu cứng ở đây — sửa trong themes.ts. */
+  --color-primary: var(--kl-primary);
+  --color-primary-hover: color-mix(in oklab, var(--kl-primary) 85%, white);
+  --color-primary-foreground: var(--kl-on-primary);
+
+  --color-secondary: var(--kl-secondary);
+  --color-secondary-hover: color-mix(in oklab, var(--kl-secondary) 70%, black);
   --color-secondary-foreground: #ffffff;
+
+  --color-surface: var(--kl-surface);
+  --color-page: var(--kl-base);
+  --color-deep: var(--kl-deep);
+  --color-brand-accent: var(--kl-accent);
+  --color-brand-soft: color-mix(in oklab, var(--kl-primary) 45%, white);
 
   /* shacdn UI variables */
   --color-background: #faf6f2;
@@ -18,23 +26,60 @@
   --color-popover-foreground: #0A0A0D;
   --color-muted: #fdf8f1;
   --color-muted-foreground: #665d58;
-  --color-accent: #fff0e9;
+  --color-accent: color-mix(in oklab, var(--kl-primary) 10%, white);
   --color-accent-foreground: #17110f;
   --color-destructive: #ef4444;
   --color-destructive-foreground: #f8fafc;
   --color-border: rgba(23, 17, 15, 0.12);
   --color-input: rgba(23, 17, 15, 0.12);
-  --color-ring: #f4511e;
-  
-  /* Map legacy colors to our primary & secondary */
-  --color-blue-50: #fff0e9;
-  --color-blue-100: #ffd3c3;
-  --color-blue-500: #f4511e;
-  --color-blue-600: #d93f12;
-  --color-purple-50: #e5f0ef;
-  --color-purple-100: #b8d5d2;
-  --color-purple-500: #0d4f4b;
-  --color-purple-600: #062b29;
+  --color-ring: var(--kl-primary);
+
+  /* Các thang màu Tailwind mang màu thương hiệu được ánh xạ theo theme:
+     orange/blue → primary, teal → accent, purple → secondary. */
+  --color-orange-50: color-mix(in oklab, var(--kl-primary) 8%, white);
+  --color-orange-100: color-mix(in oklab, var(--kl-primary) 16%, white);
+  --color-orange-200: color-mix(in oklab, var(--kl-primary) 32%, white);
+  --color-orange-300: color-mix(in oklab, var(--kl-primary) 52%, white);
+  --color-orange-400: color-mix(in oklab, var(--kl-primary) 74%, white);
+  --color-orange-500: var(--kl-primary);
+  --color-orange-600: color-mix(in oklab, var(--kl-primary) 84%, black);
+  --color-orange-700: color-mix(in oklab, var(--kl-primary) 68%, black);
+  --color-orange-800: color-mix(in oklab, var(--kl-primary) 52%, black);
+  --color-orange-900: color-mix(in oklab, var(--kl-primary) 38%, black);
+  --color-orange-950: color-mix(in oklab, var(--kl-primary) 24%, black);
+  --color-blue-50: color-mix(in oklab, var(--kl-primary) 8%, white);
+  --color-blue-100: color-mix(in oklab, var(--kl-primary) 16%, white);
+  --color-blue-200: color-mix(in oklab, var(--kl-primary) 32%, white);
+  --color-blue-300: color-mix(in oklab, var(--kl-primary) 52%, white);
+  --color-blue-400: color-mix(in oklab, var(--kl-primary) 74%, white);
+  --color-blue-500: var(--kl-primary);
+  --color-blue-600: color-mix(in oklab, var(--kl-primary) 84%, black);
+  --color-blue-700: color-mix(in oklab, var(--kl-primary) 68%, black);
+  --color-blue-800: color-mix(in oklab, var(--kl-primary) 52%, black);
+  --color-blue-900: color-mix(in oklab, var(--kl-primary) 38%, black);
+  --color-blue-950: color-mix(in oklab, var(--kl-primary) 24%, black);
+  --color-teal-50: color-mix(in oklab, var(--kl-accent) 8%, white);
+  --color-teal-100: color-mix(in oklab, var(--kl-accent) 16%, white);
+  --color-teal-200: color-mix(in oklab, var(--kl-accent) 32%, white);
+  --color-teal-300: color-mix(in oklab, var(--kl-accent) 52%, white);
+  --color-teal-400: color-mix(in oklab, var(--kl-accent) 74%, white);
+  --color-teal-500: var(--kl-accent);
+  --color-teal-600: color-mix(in oklab, var(--kl-accent) 84%, black);
+  --color-teal-700: color-mix(in oklab, var(--kl-accent) 68%, black);
+  --color-teal-800: color-mix(in oklab, var(--kl-accent) 52%, black);
+  --color-teal-900: color-mix(in oklab, var(--kl-accent) 38%, black);
+  --color-teal-950: color-mix(in oklab, var(--kl-accent) 24%, black);
+  --color-purple-50: color-mix(in oklab, var(--kl-secondary) 8%, white);
+  --color-purple-100: color-mix(in oklab, var(--kl-secondary) 16%, white);
+  --color-purple-200: color-mix(in oklab, var(--kl-secondary) 32%, white);
+  --color-purple-300: color-mix(in oklab, var(--kl-secondary) 52%, white);
+  --color-purple-400: color-mix(in oklab, var(--kl-secondary) 74%, white);
+  --color-purple-500: var(--kl-secondary);
+  --color-purple-600: color-mix(in oklab, var(--kl-secondary) 84%, black);
+  --color-purple-700: color-mix(in oklab, var(--kl-secondary) 68%, black);
+  --color-purple-800: color-mix(in oklab, var(--kl-secondary) 52%, black);
+  --color-purple-900: color-mix(in oklab, var(--kl-secondary) 38%, black);
+  --color-purple-950: color-mix(in oklab, var(--kl-secondary) 24%, black);
 
   /* Global Radius override for a smoother look */
   --radius-sm: 0.5rem;
@@ -52,14 +97,14 @@
   --cp-text-dark: #17110f;
   --cp-white: #ffffff;
 
-  --cp-orange: #f4511e;
-  --cp-orange-bright: #ff5722;
-  --cp-orange-dark: #42170b;
-  --cp-orange-deep: #180904;
+  --cp-orange: var(--kl-primary);
+  --cp-orange-bright: color-mix(in oklab, var(--kl-primary) 85%, white);
+  --cp-orange-dark: color-mix(in oklab, var(--kl-primary) 28%, black);
+  --cp-orange-deep: color-mix(in oklab, var(--kl-primary) 10%, black);
 
-  --cp-teal: #0d4f4b;
-  --cp-teal-dark: #062b29;
-  --cp-teal-deep: #010908;
+  --cp-teal: var(--kl-secondary);
+  --cp-teal-dark: color-mix(in oklab, var(--kl-secondary) 55%, black);
+  --cp-teal-deep: color-mix(in oklab, var(--kl-deep) 30%, black);
 
   --cp-border-light: rgba(255, 255, 255, 0.65);
   --cp-border-dark: rgba(23, 17, 15, 0.12);
@@ -74,7 +119,7 @@
   --background-strong: var(--cp-black);
   --surface-primary: rgba(255, 255, 255, 0.86);
   --surface-secondary: var(--cp-cream-soft);
-  --surface-hover: #fff0e9;
+  --surface-hover: color-mix(in oklab, var(--kl-primary) 10%, white);
 
   --text-primary: var(--cp-text-dark);
   --text-secondary: #665d58;
@@ -83,11 +128,11 @@
 
   --accent-primary: var(--cp-orange);
   --accent-hover: var(--cp-orange-bright);
-  --accent-soft: rgba(244, 81, 30, 0.12);
-  --accent-gradient: linear-gradient(135deg, #ffb02e 0%, #ff5722 42%, #f4511e 100%);
-  --accent-gradient-strong: linear-gradient(110deg, #062b29 0%, #275550 26%, #9f4a31 65%, #f4511e 100%);
+  --accent-soft: rgb(var(--kl-primary-rgb) / 0.12);
+  --accent-gradient: var(--kl-gradient);
+  --accent-gradient-strong: var(--kl-gradient-strong);
   --teal-primary: var(--cp-teal);
-  --teal-soft: rgba(13, 79, 75, 0.12);
+  --teal-soft: rgb(var(--kl-secondary-rgb) / 0.12);
 
   --border-default: var(--cp-border-dark);
   --border-strong: rgba(23, 17, 15, 0.24);
@@ -95,7 +140,7 @@
 
   --shadow-soft: 0 18px 60px rgba(23, 17, 15, 0.1);
   --shadow-hover: 0 30px 90px rgba(23, 17, 15, 0.2);
-  --shadow-glow: 0 28px 90px rgba(244, 81, 30, 0.3);
+  --shadow-glow: 0 28px 90px rgb(var(--kl-primary-rgb) / 0.3);
 
   --radius-small: 12px;
   --radius-medium: 20px;
@@ -124,8 +169,8 @@
   body {
     @apply text-foreground;
     background:
-      radial-gradient(circle at 8% 8%, rgba(241, 90, 36, 0.1), transparent 28rem),
-      radial-gradient(circle at 88% 12%, rgba(15, 76, 73, 0.1), transparent 26rem),
+      radial-gradient(circle at 8% 8%, rgb(var(--kl-primary-rgb) / 0.1), transparent 28rem),
+      radial-gradient(circle at 88% 12%, rgb(var(--kl-secondary-rgb) / 0.1), transparent 26rem),
       linear-gradient(180deg, var(--background-primary), var(--background-secondary));
     color: var(--text-primary);
     font-family: var(--font-body);
@@ -140,7 +185,7 @@
   }
 
   :focus-visible {
-    outline: 3px solid rgba(241, 90, 36, 0.35);
+    outline: 3px solid rgb(var(--kl-primary-rgb) / 0.35);
     outline-offset: 3px;
   }
 
@@ -170,7 +215,7 @@
   select:focus,
   textarea:focus {
     border-color: var(--accent-primary) !important;
-    box-shadow: 0 0 0 4px rgba(241, 90, 36, 0.12);
+    box-shadow: 0 0 0 4px rgb(var(--kl-primary-rgb) / 0.12);
     background: #fff;
   }
 
@@ -201,7 +246,7 @@
 
   .card-modern:hover {
     transform: translateY(-4px);
-    border-color: rgba(241, 90, 36, 0.24);
+    border-color: rgb(var(--kl-primary-rgb) / 0.24);
     box-shadow: var(--shadow-hover);
   }
   
@@ -239,17 +284,17 @@
   .kolab-app-shell {
     min-height: 100vh;
     background:
-      radial-gradient(circle at 7% 10%, rgba(255, 92, 38, 0.24) 0%, rgba(255, 92, 38, 0.12) 22%, transparent 42%),
-      radial-gradient(circle at 94% 86%, rgba(38, 201, 187, 0.22) 0%, rgba(38, 201, 187, 0.11) 24%, transparent 44%),
-      radial-gradient(circle at 58% 28%, rgba(112, 67, 48, 0.1), transparent 36%),
-      linear-gradient(135deg, #20262c 0%, #282f36 46%, #223634 100%);
+      radial-gradient(circle at 7% 10%, rgb(var(--kl-primary-rgb) / 0.24) 0%, rgb(var(--kl-primary-rgb) / 0.12) 22%, transparent 42%),
+      radial-gradient(circle at 94% 86%, rgb(var(--kl-accent-rgb) / 0.22) 0%, rgb(var(--kl-accent-rgb) / 0.11) 24%, transparent 44%),
+      radial-gradient(circle at 58% 28%, rgb(var(--kl-primary-rgb) / 0.06), transparent 36%),
+      linear-gradient(135deg, var(--kl-shell-1) 0%, var(--kl-shell-2) 46%, var(--kl-shell-3) 100%);
     background-attachment: fixed;
     color: var(--text-primary);
   }
 
   .kolab-nav-shell {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(5, 5, 5, 0.78);
+    background: color-mix(in oklab, var(--kl-base) 78%, transparent);
     color: #fff;
     box-shadow: 0 14px 45px rgba(0, 0, 0, 0.28);
     backdrop-filter: blur(24px);
@@ -276,20 +321,20 @@
   .kolab-nav-link:hover {
     background: rgba(255, 255, 255, 0.1);
     color: #fff;
-    box-shadow: 0 0 28px rgba(15, 183, 173, 0.16);
+    box-shadow: 0 0 28px rgb(var(--kl-accent-rgb) / 0.16);
   }
 
   .kolab-nav-link.is-active {
     background: var(--accent-gradient);
     color: #fff;
-    box-shadow: 0 12px 30px rgba(255, 75, 31, 0.24);
+    box-shadow: 0 12px 30px rgb(var(--kl-primary-rgb) / 0.24);
   }
 
   .kolab-menu-panel {
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 24px;
-    background: rgba(17, 17, 17, 0.96);
+    background: rgb(var(--kl-surface-rgb) / 0.96);
     color: #fff;
     box-shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
     backdrop-filter: blur(18px);
@@ -409,14 +454,14 @@
     background:
       radial-gradient(
         circle at 80% 85%,
-        rgba(255, 94, 35, 0.42),
+        rgb(var(--kl-primary-rgb) / 0.42),
         transparent 36%
       ),
       linear-gradient(
         180deg,
-        #180904 0%,
-        #42170b 42%,
-        #f4511e 100%
+        var(--cp-orange-deep) 0%,
+        var(--cp-orange-dark) 42%,
+        var(--kl-primary) 100%
       );
   }
 
@@ -424,14 +469,14 @@
     background:
       radial-gradient(
         circle at 80% 85%,
-        rgba(35, 135, 127, 0.35),
+        rgb(var(--kl-accent-rgb) / 0.35),
         transparent 36%
       ),
       linear-gradient(
         180deg,
-        #010908 0%,
-        #062b29 48%,
-        #0d4f4b 100%
+        var(--cp-teal-deep) 0%,
+        var(--cp-teal-dark) 48%,
+        var(--kl-secondary) 100%
       );
   }
 
@@ -504,9 +549,9 @@
     overflow: hidden;
     border-radius: 28px;
     background:
-      radial-gradient(circle at 88% 20%, rgba(255, 90, 31, 0.38), transparent 34%),
-      linear-gradient(110deg, #032f2c 0%, #06453f 30%, #3a140b 68%, #ff4b1f 100%);
-    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.34), 0 0 70px rgba(255, 75, 31, 0.12);
+      radial-gradient(circle at 88% 20%, rgb(var(--kl-primary-rgb) / 0.38), transparent 34%),
+      var(--kl-gradient-strong);
+    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.34), 0 0 70px rgb(var(--kl-primary-rgb) / 0.12);
   }
 
   .admin-hero-strong::before {
@@ -538,9 +583,9 @@
     min-height: 100vh;
     overflow-x: hidden;
     background:
-      radial-gradient(circle at 12% 4%, rgba(255, 75, 31, 0.2), transparent 28rem),
-      radial-gradient(circle at 88% 12%, rgba(15, 183, 173, 0.18), transparent 30rem),
-      linear-gradient(180deg, #050505 0%, #0d0d0d 42%, #032f2c 118%) !important;
+      radial-gradient(circle at 12% 4%, rgb(var(--kl-primary-rgb) / 0.2), transparent 28rem),
+      radial-gradient(circle at 88% 12%, rgb(var(--kl-accent-rgb) / 0.18), transparent 30rem),
+      linear-gradient(180deg, var(--kl-base) 0%, color-mix(in oklab, var(--kl-base) 50%, var(--kl-surface)) 42%, var(--kl-deep) 118%) !important;
     color: #ffffff;
     font-family: var(--font-body);
   }
@@ -562,21 +607,21 @@
     inset: 0;
     z-index: -1;
     background:
-      radial-gradient(circle at 18% 18%, rgba(255, 90, 31, 0.16), transparent 24rem),
-      radial-gradient(circle at 82% 12%, rgba(15, 183, 173, 0.12), transparent 24rem);
+      radial-gradient(circle at 18% 18%, rgb(var(--kl-primary-rgb) / 0.16), transparent 24rem),
+      radial-gradient(circle at 82% 12%, rgb(var(--kl-accent-rgb) / 0.12), transparent 24rem);
     pointer-events: none;
   }
 
   .public-section-teal {
     background:
-      radial-gradient(circle at 84% 18%, rgba(15, 183, 173, 0.2), transparent 28rem),
-      linear-gradient(180deg, #032f2c 0%, #050505 100%);
+      radial-gradient(circle at 84% 18%, rgb(var(--kl-accent-rgb) / 0.2), transparent 28rem),
+      linear-gradient(180deg, var(--kl-deep) 0%, var(--kl-base) 100%);
   }
 
   .public-section-orange {
     background:
-      radial-gradient(circle at 12% 16%, rgba(255, 90, 31, 0.24), transparent 28rem),
-      linear-gradient(180deg, #3a140b 0%, #050505 100%);
+      radial-gradient(circle at 12% 16%, rgb(var(--kl-primary-rgb) / 0.24), transparent 28rem),
+      linear-gradient(180deg, color-mix(in oklab, var(--kl-primary) 22%, black) 0%, var(--kl-base) 100%);
   }
 
   .public-dark-page .bg-background,
@@ -594,12 +639,15 @@
   .public-dark-page .bg-slate-100,
   .public-dark-page .bg-blue-50,
   .public-dark-page .bg-amber-100 {
-    background-color: rgba(17, 17, 17, 0.9) !important;
+    background-color: rgb(var(--kl-surface-rgb) / 0.9) !important;
   }
 
-  .public-dark-page .bg-blue-50,
+  .public-dark-page .bg-blue-50 {
+    background: rgb(var(--kl-primary-rgb) / 0.13) !important;
+  }
+
   .public-dark-page .bg-amber-100 {
-    background: rgba(255, 75, 31, 0.13) !important;
+    background: rgba(251, 146, 60, 0.13) !important;
   }
 
   .public-dark-page .text-slate-950,
@@ -625,7 +673,7 @@
   }
 
   .public-dark-page .text-primary {
-    color: #ff5a1f !important;
+    color: var(--kl-primary) !important;
   }
 
   .public-dark-page .text-emerald-500,
@@ -648,7 +696,7 @@
   .public-dark-page .shadow-lg,
   .public-dark-page .shadow-xl,
   .public-dark-page .shadow-2xl {
-    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34), 0 0 34px rgba(255, 75, 31, 0.08) !important;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34), 0 0 34px rgb(var(--kl-primary-rgb) / 0.08) !important;
   }
 
   .public-dark-page .rounded-\[32px\],
@@ -662,15 +710,15 @@
   .public-dark-page .card-modern,
   .public-dark-page article,
   .public-dark-page .group.bg-white {
-    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32), 0 0 32px rgba(15, 183, 173, 0.06);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32), 0 0 32px rgb(var(--kl-accent-rgb) / 0.06);
   }
 
   .public-dark-page .pricing-card:hover,
   .public-dark-page .card-modern:hover,
   .public-dark-page .group.bg-white:hover {
     transform: translateY(-4px);
-    border-color: rgba(255, 90, 31, 0.44) !important;
-    box-shadow: 0 28px 90px rgba(0, 0, 0, 0.46), 0 0 42px rgba(255, 75, 31, 0.16) !important;
+    border-color: rgb(var(--kl-primary-rgb) / 0.44) !important;
+    box-shadow: 0 28px 90px rgba(0, 0, 0, 0.46), 0 0 42px rgb(var(--kl-primary-rgb) / 0.16) !important;
   }
 
   .public-dark-page input,
@@ -692,12 +740,12 @@
 
   .public-dark-page table thead,
   .public-dark-page thead.bg-slate-50 {
-    background: rgba(3, 47, 44, 0.84) !important;
+    background: rgb(var(--kl-deep-rgb) / 0.84) !important;
   }
 
   .public-dark-page table tbody tr:hover,
   .public-dark-page .hover\:bg-slate-50\/50:hover {
-    background-color: rgba(15, 183, 173, 0.1) !important;
+    background-color: rgb(var(--kl-accent-rgb) / 0.1) !important;
   }
 
   .public-dark-page .divide-slate-50 > :not([hidden]) ~ :not([hidden]) {
@@ -707,9 +755,9 @@
   .public-dark-page .bg-primary,
   .public-dark-page button.bg-primary,
   .public-dark-page a.bg-primary {
-    background: linear-gradient(135deg, #ff4b1f 0%, #ff6a1a 100%) !important;
+    background: var(--kl-gradient) !important;
     color: #ffffff !important;
-    box-shadow: 0 12px 32px rgba(255, 75, 31, 0.26);
+    box-shadow: 0 12px 32px rgb(var(--kl-primary-rgb) / 0.26);
   }
 
   .public-dark-page .hover\:bg-primary-hover:hover {
@@ -718,12 +766,12 @@
 
   .public-dark-page .border-primary,
   .public-dark-page .hover\:border-primary:hover {
-    border-color: #ff5a1f !important;
+    border-color: var(--kl-primary) !important;
   }
 
   .public-dark-page a:not(.bg-primary):hover,
   .public-dark-page button:not(.bg-primary):hover {
-    border-color: rgba(15, 183, 173, 0.45);
+    border-color: rgb(var(--kl-accent-rgb) / 0.45);
   }
 
   .public-dark-page .cp-reveal {
@@ -749,8 +797,8 @@
   --text-secondary: #d1d5db;
   --text-tertiary: #94a3b8;
   --border-default: rgba(255, 255, 255, 0.12);
-  --surface-primary: rgba(17, 17, 17, 0.9);
-  --surface-secondary: rgba(3, 47, 44, 0.72);
+  --surface-primary: rgb(var(--kl-surface-rgb) / 0.9);
+  --surface-secondary: rgb(var(--kl-deep-rgb) / 0.72);
   --shadow-soft: 0 24px 70px rgba(0, 0, 0, 0.34);
   --shadow-hover: 0 34px 100px rgba(0, 0, 0, 0.48);
 }
@@ -758,10 +806,10 @@
 .kolab-auth-shell {
   min-height: 100vh;
   background:
-    radial-gradient(circle at 7% 10%, rgba(255, 92, 38, 0.24) 0%, rgba(255, 92, 38, 0.12) 22%, transparent 42%),
-    radial-gradient(circle at 94% 86%, rgba(38, 201, 187, 0.22) 0%, rgba(38, 201, 187, 0.11) 24%, transparent 44%),
-    radial-gradient(circle at 58% 28%, rgba(112, 67, 48, 0.1), transparent 36%),
-    linear-gradient(135deg, #20262c 0%, #282f36 46%, #223634 100%) !important;
+    radial-gradient(circle at 7% 10%, rgb(var(--kl-primary-rgb) / 0.24) 0%, rgb(var(--kl-primary-rgb) / 0.12) 22%, transparent 42%),
+    radial-gradient(circle at 94% 86%, rgb(var(--kl-accent-rgb) / 0.22) 0%, rgb(var(--kl-accent-rgb) / 0.11) 24%, transparent 44%),
+    radial-gradient(circle at 58% 28%, rgb(var(--kl-primary-rgb) / 0.06), transparent 36%),
+    linear-gradient(135deg, var(--kl-shell-1) 0%, var(--kl-shell-2) 46%, var(--kl-shell-3) 100%) !important;
   background-attachment: fixed;
   color: #fff;
 }
@@ -796,7 +844,7 @@
 .kolab-app-shell .bg-slate-100,
 .kolab-app-shell .bg-slate-200,
 .kolab-app-shell .bg-gray-50 {
-  background-color: rgba(17, 17, 17, 0.88) !important;
+  background-color: rgb(var(--kl-surface-rgb) / 0.88) !important;
   color: #fff;
 }
 
@@ -863,7 +911,7 @@
 
 .kolab-app-shell table thead,
 .kolab-app-shell thead.bg-slate-50 {
-  background: rgba(3, 47, 44, 0.72) !important;
+  background: rgb(var(--kl-deep-rgb) / 0.72) !important;
   color: #d1d5db !important;
 }
 
@@ -877,7 +925,7 @@
 .kolab-app-shell .hover\:bg-slate-50\/50:hover,
 .kolab-app-shell .hover\:bg-slate-100:hover,
 .kolab-app-shell .hover\:bg-white:hover {
-  background-color: rgba(15, 183, 173, 0.1) !important;
+  background-color: rgb(var(--kl-accent-rgb) / 0.1) !important;
 }
 
 .kolab-auth-shell .shadow-\[var\(--shadow-soft\)\],
@@ -895,12 +943,15 @@
 .kolab-app-shell .bg-blue-50,
 .kolab-app-shell .bg-blue-100,
 .kolab-auth-shell .bg-blue-50,
-.kolab-auth-shell .bg-blue-100,
+.kolab-auth-shell .bg-blue-100 {
+  background-color: rgb(var(--kl-primary-rgb) / 0.14) !important;
+}
+
 .kolab-app-shell .bg-amber-50,
 .kolab-app-shell .bg-amber-100,
 .kolab-auth-shell .bg-amber-50,
 .kolab-auth-shell .bg-amber-100 {
-  background-color: rgba(255, 75, 31, 0.14) !important;
+  background-color: rgba(251, 146, 60, 0.14) !important;
 }
 
 .kolab-app-shell .bg-green-50,
@@ -1007,18 +1058,18 @@
 
 .kolab-app-shell [class*="from-purple"],
 .kolab-app-shell [class*="from-blue"] {
-  --tw-gradient-from: #ff4b1f var(--tw-gradient-from-position) !important;
-  --tw-gradient-to: rgb(255 75 31 / 0) var(--tw-gradient-to-position) !important;
+  --tw-gradient-from: var(--kl-primary) var(--tw-gradient-from-position) !important;
+  --tw-gradient-to: rgb(var(--kl-primary-rgb) / 0) var(--tw-gradient-to-position) !important;
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
 }
 
 .kolab-app-shell [class*="to-blue"],
 .kolab-app-shell [class*="to-purple"] {
-  --tw-gradient-to: #f43b1b var(--tw-gradient-to-position) !important;
+  --tw-gradient-to: var(--kl-primary) var(--tw-gradient-to-position) !important;
 }
 
 .kolab-app-shell [class*="via-"] {
-  --tw-gradient-via: #7a260f var(--tw-gradient-via-position) !important;
+  --tw-gradient-via: color-mix(in oklab, var(--kl-primary) 45%, black) var(--tw-gradient-via-position) !important;
 }
 
 .kolab-auth-shell .text-purple-600,
@@ -1027,7 +1078,7 @@
 .kolab-app-shell .text-purple-700,
 .kolab-app-shell .text-blue-600,
 .kolab-app-shell .text-blue-700 {
-  color: #ffb199 !important;
+  color: var(--color-brand-soft) !important;
 }
 
 .kolab-app-shell .border-purple-100,
@@ -1038,7 +1089,7 @@
 .kolab-app-shell .border-blue-100,
 .kolab-app-shell .border-blue-200,
 .kolab-app-shell .border-blue-500 {
-  border-color: rgba(255, 90, 31, 0.5) !important;
+  border-color: rgb(var(--kl-primary-rgb) / 0.5) !important;
 }
 
 .kolab-app-shell .rounded-xl.bg-white,
@@ -1048,14 +1099,14 @@
 .kolab-app-shell .rounded-\[32px\].bg-white,
 .kolab-app-shell .rounded-\[40px\].bg-white,
 .kolab-app-shell [class*="bg-white"][class*="rounded"] {
-  background: rgba(17, 17, 17, 0.9) !important;
+  background: rgb(var(--kl-surface-rgb) / 0.9) !important;
   border-color: rgba(255, 255, 255, 0.12) !important;
 }
 
 .kolab-app-shell [class*="shadow-blue"],
 .kolab-app-shell [class*="shadow-purple"],
 .kolab-app-shell [class*="shadow-primary"] {
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34), 0 0 34px rgba(255, 75, 31, 0.1) !important;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34), 0 0 34px rgb(var(--kl-primary-rgb) / 0.1) !important;
 }
 
 .kolab-app-shell main > div,
@@ -1073,9 +1124,9 @@
 .kolab-auth-shell button[class*="bg-primary"],
 .kolab-auth-shell a[class*="bg-primary"] {
   border-radius: 9999px !important;
-  background: linear-gradient(90deg, #ff4b1f, #ff641f) !important;
+  background: var(--kl-gradient) !important;
   color: #ffffff !important;
-  box-shadow: 0 10px 30px rgba(255, 75, 31, 0.28) !important;
+  box-shadow: 0 10px 30px rgb(var(--kl-primary-rgb) / 0.28) !important;
 }
 
 .kolab-app-shell button[class*="bg-primary"]:hover,
@@ -1084,7 +1135,7 @@
 .kolab-auth-shell a[class*="bg-primary"]:hover {
   transform: translateY(-1px);
   filter: brightness(1.07);
-  box-shadow: 0 14px 38px rgba(255, 75, 31, 0.38) !important;
+  box-shadow: 0 14px 38px rgb(var(--kl-primary-rgb) / 0.38) !important;
 }
 
 .kolab-app-shell button[class*="bg-white"],
@@ -1105,14 +1156,14 @@
 .kolab-app-shell a[class*="hover:bg-slate"]:hover,
 .kolab-auth-shell button[class*="hover:bg-slate"]:hover,
 .kolab-auth-shell a[class*="hover:bg-slate"]:hover {
-  background: rgba(255, 75, 31, 0.12) !important;
+  background: rgb(var(--kl-primary-rgb) / 0.12) !important;
 }
 
 .kolab-app-shell [role="dialog"],
 .kolab-app-shell [data-slot="dialog-content"],
 .kolab-auth-shell [role="dialog"],
 .kolab-auth-shell [data-slot="dialog-content"] {
-  background: rgba(17, 17, 17, 0.97) !important;
+  background: rgb(var(--kl-surface-rgb) / 0.97) !important;
   border-color: rgba(255, 255, 255, 0.14) !important;
   color: #ffffff !important;
 }
@@ -1121,7 +1172,7 @@
 .kolab-app-shell .overflow-x-auto:has(table) {
   border-radius: 24px;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(17, 17, 17, 0.9);
+  background: rgb(var(--kl-surface-rgb) / 0.9);
   box-shadow: var(--shadow-soft);
 }
 
@@ -1135,7 +1186,7 @@
 }
 
 .kolab-app-shell [data-slot="card"] {
-  background: rgba(17, 17, 17, 0.92) !important;
+  background: rgb(var(--kl-surface-rgb) / 0.92) !important;
   color: #ffffff !important;
 }
 
@@ -1143,8 +1194,8 @@
 .kolab-auth-shell .focus\:border-purple-500:focus,
 .kolab-app-shell .focus\:ring-purple-500:focus,
 .kolab-app-shell .focus\:border-purple-500:focus {
-  border-color: #ff4b1f !important;
-  box-shadow: 0 0 0 4px rgba(255, 75, 31, 0.16) !important;
+  border-color: var(--kl-primary) !important;
+  box-shadow: 0 0 0 4px rgb(var(--kl-primary-rgb) / 0.16) !important;
 }
 
 .kolab-app-shell .fill-slate-900 {
@@ -1162,13 +1213,13 @@
   gap: 0.5rem;
   border: 0;
   border-radius: 9999px;
-  background: linear-gradient(90deg, #ff4b1f, #ff6a1a) !important;
+  background: var(--kl-gradient) !important;
   color: #ffffff !important;
   padding: 12px 22px;
   font-size: 0.875rem;
   font-weight: 700;
   line-height: 1.25rem;
-  box-shadow: 0 8px 24px rgba(255, 75, 31, 0.28);
+  box-shadow: 0 8px 24px rgb(var(--kl-primary-rgb) / 0.28);
   cursor: pointer;
   transition:
     transform 180ms var(--ease-emphasized),
@@ -1180,12 +1231,12 @@
 .ai-primary-cta:hover:not(:disabled) {
   transform: translateY(-1px);
   filter: brightness(1.08) saturate(1.04);
-  box-shadow: 0 12px 32px rgba(255, 75, 31, 0.42);
+  box-shadow: 0 12px 32px rgb(var(--kl-primary-rgb) / 0.42);
 }
 
 .ai-primary-cta:active:not(:disabled) {
   transform: translateY(0);
-  box-shadow: 0 8px 22px rgba(255, 75, 31, 0.3);
+  box-shadow: 0 8px 22px rgb(var(--kl-primary-rgb) / 0.3);
 }
 
 .ai-primary-cta:disabled {
@@ -1193,16 +1244,16 @@
   opacity: 0.58;
   transform: none;
   filter: grayscale(0.12);
-  box-shadow: 0 6px 18px rgba(255, 75, 31, 0.18);
+  box-shadow: 0 6px 18px rgb(var(--kl-primary-rgb) / 0.18);
 }
 
 .ai-primary-cta:focus-visible {
-  outline: 3px solid rgba(255, 106, 26, 0.45);
+  outline: 3px solid rgb(var(--kl-primary-rgb) / 0.45);
   outline-offset: 3px;
 }
 
 .campaign-filter-bar {
-  background: #111111 !important;
+  background: var(--kl-surface) !important;
   border-color: rgba(255, 255, 255, 0.1) !important;
 }
 
@@ -1220,9 +1271,9 @@
 
 .campaign-filter-select > button:focus-visible,
 .campaign-filter-select > button[aria-expanded="true"] {
-  border-color: #ff4b1f !important;
+  border-color: var(--kl-primary) !important;
   background: #0b0b0b !important;
-  box-shadow: 0 0 0 4px rgba(255, 75, 31, 0.18) !important;
+  box-shadow: 0 0 0 4px rgb(var(--kl-primary-rgb) / 0.18) !important;
 }
 
 .campaign-filter-select > button span {
@@ -1247,12 +1298,12 @@
 }
 
 .campaign-filter-select > div.absolute button:hover {
-  background: rgba(255, 75, 31, 0.12) !important;
+  background: rgb(var(--kl-primary-rgb) / 0.12) !important;
   color: #ffffff !important;
 }
 
 .campaign-filter-select > div.absolute button svg {
-  color: #ff4b1f !important;
+  color: var(--kl-primary) !important;
   stroke: currentColor !important;
 }
 
@@ -1267,7 +1318,7 @@
   overflow: hidden;
   border-color: rgba(255, 255, 255, 0.1) !important;
   background: #0b0b0b !important;
-  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.58), 0 0 48px rgba(255, 75, 31, 0.12) !important;
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.58), 0 0 48px rgb(var(--kl-primary-rgb) / 0.12) !important;
 }
 
 .campaign-modal__header {
@@ -1283,7 +1334,7 @@
   overflow-y: auto;
   overscroll-behavior: contain;
   padding: 2rem;
-  scrollbar-color: rgba(255, 106, 26, 0.72) #171717;
+  scrollbar-color: rgb(var(--kl-primary-rgb) / 0.72) #171717;
   scrollbar-gutter: stable;
   scrollbar-width: thin;
 }
@@ -1302,19 +1353,19 @@
 .campaign-description-textarea::-webkit-scrollbar-thumb {
   border: 2px solid #171717;
   border-radius: 9999px;
-  background: rgba(255, 106, 26, 0.72);
+  background: rgb(var(--kl-primary-rgb) / 0.72);
 }
 
 .campaign-modal__body::-webkit-scrollbar-thumb:hover,
 .campaign-description-textarea::-webkit-scrollbar-thumb:hover {
-  background: #ff6a1a;
+  background: var(--kl-primary);
 }
 
 .campaign-modal__footer {
   flex: 0 0 auto;
   margin: 0 !important;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  background: #111111;
+  background: var(--kl-surface);
   padding: 1rem 2rem;
 }
 
@@ -1323,7 +1374,7 @@
   max-height: 320px;
   overflow-y: auto;
   resize: vertical;
-  scrollbar-color: rgba(255, 106, 26, 0.72) #171717;
+  scrollbar-color: rgb(var(--kl-primary-rgb) / 0.72) #171717;
   scrollbar-width: thin;
 }
 
@@ -1359,8 +1410,8 @@
 .create-campaign-modal-body textarea:focus-visible,
 .create-campaign-modal-body select:focus-visible {
   background: #222222 !important;
-  border-color: #ff5a1f !important;
-  box-shadow: 0 0 0 4px rgba(255, 90, 31, 0.18) !important;
+  border-color: var(--kl-primary) !important;
+  box-shadow: 0 0 0 4px rgb(var(--kl-primary-rgb) / 0.18) !important;
   outline: none !important;
 }
 
@@ -1382,16 +1433,16 @@
 
 .create-campaign-submit {
   border-radius: 9999px !important;
-  background: linear-gradient(90deg, #ff4b1f, #ff6a1a) !important;
+  background: var(--kl-gradient) !important;
   color: #ffffff !important;
   font-weight: 700 !important;
-  box-shadow: 0 8px 24px rgba(255, 75, 31, 0.28) !important;
+  box-shadow: 0 8px 24px rgb(var(--kl-primary-rgb) / 0.28) !important;
 }
 
 .create-campaign-submit:hover {
   transform: translateY(-1px);
   filter: brightness(1.08) saturate(1.04);
-  box-shadow: 0 12px 32px rgba(255, 75, 31, 0.42) !important;
+  box-shadow: 0 12px 32px rgb(var(--kl-primary-rgb) / 0.42) !important;
 }
 
 .create-campaign-submit:active {
@@ -1422,16 +1473,16 @@
 }
 
 .create-campaign-submit:focus-visible {
-  outline: 3px solid rgba(255, 106, 26, 0.45);
+  outline: 3px solid rgb(var(--kl-primary-rgb) / 0.45);
   outline-offset: 3px;
 }
 
 .booking-card-primary-action {
   border: 0;
   border-radius: 9999px !important;
-  background: linear-gradient(90deg, #ff4b1f, #ff6a1a) !important;
+  background: var(--kl-gradient) !important;
   color: #ffffff !important;
-  box-shadow: 0 8px 24px rgba(255, 75, 31, 0.28);
+  box-shadow: 0 8px 24px rgb(var(--kl-primary-rgb) / 0.28);
   transition:
     transform 180ms var(--ease-emphasized),
     box-shadow 180ms var(--ease-emphasized),
@@ -1442,7 +1493,7 @@
 .booking-card-primary-action:hover:not(:disabled) {
   transform: translateY(-1px);
   filter: brightness(1.08) saturate(1.04);
-  box-shadow: 0 12px 32px rgba(255, 75, 31, 0.42);
+  box-shadow: 0 12px 32px rgb(var(--kl-primary-rgb) / 0.42);
 }
 
 .booking-card-primary-action:active:not(:disabled) {
@@ -1454,12 +1505,12 @@
   opacity: 0.58;
   transform: none;
   filter: grayscale(0.12);
-  box-shadow: 0 6px 18px rgba(255, 75, 31, 0.18);
+  box-shadow: 0 6px 18px rgb(var(--kl-primary-rgb) / 0.18);
 }
 
 .booking-card-primary-action:focus-visible,
 .booking-card-secondary-action:focus-visible {
-  outline: 3px solid rgba(255, 106, 26, 0.45);
+  outline: 3px solid rgb(var(--kl-primary-rgb) / 0.45);
   outline-offset: 3px;
 }
 
@@ -1478,9 +1529,9 @@
 
 .booking-card-secondary-action:hover {
   transform: translateY(-1px);
-  border-color: rgba(255, 90, 31, 0.45) !important;
+  border-color: rgb(var(--kl-primary-rgb) / 0.45) !important;
   background: rgba(255, 255, 255, 0.1) !important;
-  box-shadow: 0 10px 28px rgba(255, 75, 31, 0.16);
+  box-shadow: 0 10px 28px rgb(var(--kl-primary-rgb) / 0.16);
 }
 
 .booking-card-secondary-action:active {
@@ -1557,7 +1608,7 @@
 
 .booking-discovery-page .text-purple-600,
 .booking-discovery-page .text-purple-700 {
-  color: #ffb08a !important;
+  color: var(--color-brand-soft) !important;
 }
 
 .booking-discovery-page .text-green-600,
@@ -1620,7 +1671,7 @@
   }
 
   table tbody tr:hover {
-    background: rgba(255, 242, 238, 0.45);
+    background: rgb(var(--kl-primary-rgb) / 0.05);
   }
 
   @media (prefers-reduced-motion: reduce) {

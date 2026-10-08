@@ -892,9 +892,9 @@ export function CampaignBookingPage() {
     <DashboardLayout role="marketer">
       <div className="booking-discovery-page space-y-8">
         <div className="relative isolate overflow-hidden rounded-[32px] border border-white/10 bg-[#050505] px-6 py-8 shadow-2xl shadow-black/30 sm:px-8 lg:px-10">
-          <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_12%_20%,rgba(255,90,31,0.22),transparent_28rem),radial-gradient(circle_at_88%_4%,rgba(20,184,166,0.16),transparent_30rem),linear-gradient(135deg,#050505_0%,#0b0b0b_54%,#032f2c_130%)]" />
+          <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_12%_20%,rgb(var(--kl-primary-rgb)/0.22),transparent_28rem),radial-gradient(circle_at_88%_4%,rgb(var(--kl-accent-rgb)/0.16),transparent_30rem),linear-gradient(135deg,var(--kl-base)_0%,#0b0b0b_54%,var(--kl-deep)_130%)]" />
           <div className="inline-flex items-center gap-2 rounded-full border border-orange-400/20 bg-orange-500/10 px-4 py-2 text-xs font-black uppercase tracking-widest text-orange-200 shadow-lg shadow-orange-500/10">
-            <Sparkles size={16} className="text-[#ff6a2a]" />
+            <Sparkles size={16} className="text-primary" />
             Creator Discovery
           </div>
           <h1 className="mt-5 text-4xl font-black leading-tight text-white md:text-5xl">Khám phá KOCs</h1>
@@ -1030,7 +1030,7 @@ export function CampaignBookingPage() {
                 onClick={() => setSelectedPreset(preset.id)}
                 className={`rounded-full border px-5 py-2.5 text-sm font-black transition-all ${
                   selectedPreset === preset.id
-                    ? "border-orange-300/70 bg-gradient-to-r from-[#ff4b1f] to-[#ff6a1a] text-white shadow-lg shadow-orange-500/25"
+                    ? "border-orange-300/70 bg-brand-gradient text-white shadow-lg shadow-orange-500/25"
                     : "border-white/12 bg-[#121212] text-slate-300 hover:-translate-y-0.5 hover:border-orange-400/45 hover:text-white"
                 }`}
               >
@@ -1041,7 +1041,7 @@ export function CampaignBookingPage() {
         </div>
 
         <div className="relative isolate overflow-hidden rounded-[28px] border border-orange-300/20 bg-[#0b0b0b] p-6 text-white shadow-2xl shadow-black/30">
-          <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_8%_20%,rgba(255,90,31,0.2),transparent_22rem),radial-gradient(circle_at_88%_30%,rgba(20,184,166,0.13),transparent_24rem),linear-gradient(135deg,rgba(255,255,255,0.055),rgba(255,255,255,0.015))]" />
+          <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_8%_20%,rgb(var(--kl-primary-rgb)/0.2),transparent_22rem),radial-gradient(circle_at_88%_30%,rgb(var(--kl-accent-rgb)/0.13),transparent_24rem),linear-gradient(135deg,rgba(255,255,255,0.055),rgba(255,255,255,0.015))]" />
           <div className="flex items-start gap-4">
             <div className="flex h-13 w-13 flex-shrink-0 items-center justify-center rounded-full border border-orange-300/30 bg-orange-500/15 text-orange-200 shadow-lg shadow-orange-500/15">
               <Sparkles size={24} />
@@ -1086,8 +1086,8 @@ export function CampaignBookingPage() {
                   : "Mời hợp tác";
 
                 return (
-                  <div key={koc.id} className="group flex h-full flex-col overflow-hidden rounded-[28px] border border-white/10 bg-[#0b0b0b] shadow-2xl shadow-black/25 transition-all duration-300 hover:-translate-y-1 hover:border-orange-400/45 hover:shadow-[0_28px_90px_rgba(0,0,0,0.48),0_0_42px_rgba(255,90,31,0.16)]">
-                    <div className="relative h-32 bg-[radial-gradient(circle_at_18%_18%,rgba(20,184,166,0.24),transparent_12rem),linear-gradient(135deg,#032f2c_0%,#42170b_60%,#ff5a1f_120%)]">
+                  <div key={koc.id} className="group flex h-full flex-col overflow-hidden rounded-[28px] border border-white/10 bg-[#0b0b0b] shadow-2xl shadow-black/25 transition-all duration-300 hover:-translate-y-1 hover:border-orange-400/45 hover:shadow-[0_28px_90px_rgba(0,0,0,0.48),0_0_42px_rgb(var(--kl-primary-rgb)/0.16)]">
+                    <div className="relative h-32 bg-[radial-gradient(circle_at_18%_18%,rgb(var(--kl-accent-rgb)/0.24),transparent_12rem),linear-gradient(135deg,var(--kl-deep)_0%,var(--cp-orange-dark)_60%,var(--kl-primary)_120%)]">
                       <div className="absolute inset-0 bg-black/10" />
                       
                       {existingBooking && (
@@ -1146,7 +1146,7 @@ export function CampaignBookingPage() {
                             style={{ objectPosition: getAvatarObjectPosition(koc.userId) }}
                           />
                           {koc.verified && (
-                            <div className="absolute bottom-1 right-1 flex h-6 w-6 items-center justify-center rounded-full border-2 border-[#0b0b0b] bg-[#14b8a6] shadow-lg shadow-teal-500/25">
+                            <div className="absolute bottom-1 right-1 flex h-6 w-6 items-center justify-center rounded-full border-2 border-[#0b0b0b] bg-brand-accent shadow-lg shadow-teal-500/25">
                               <CheckCircle className="text-white" size={14} />
                             </div>
                           )}
@@ -1177,7 +1177,7 @@ export function CampaignBookingPage() {
                             <Heart size={14} className="text-slate-400" />
                             <p className="text-xs text-slate-600">Tương tác</p>
                           </div>
-                          <p className="text-lg font-black text-[#14b8a6]">{koc.engagementRate}</p>
+                          <p className="text-lg font-black text-brand-accent">{koc.engagementRate}</p>
                         </div>
                         <div className="rounded-[18px] border border-white/10 bg-white/[0.045] p-4">
                           <div className="flex items-center gap-1 mb-1">
@@ -1209,7 +1209,7 @@ export function CampaignBookingPage() {
                           <Clock3 size={13} className="text-orange-300" />
                           {koc.responseTime}
                         </span>
-                        <span className="font-black text-[#14b8a6]">{koc.completionRate} hoàn thành</span>
+                        <span className="font-black text-brand-accent">{koc.completionRate} hoàn thành</span>
                       </div>
                     </div>
                   </div>

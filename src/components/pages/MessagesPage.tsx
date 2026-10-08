@@ -272,7 +272,7 @@ export function MessagesPage() {
                   onClick={() => setSelectedBooking(booking)}
                   className={`group flex items-center gap-3 px-4 py-4 cursor-pointer border-l-4 transition-all ${
                     selectedBooking?.id === booking.id
-                      ? "border-[#ff5a1f] bg-orange-500/[0.14] shadow-sm"
+                      ? "border-primary bg-orange-500/[0.14] shadow-sm"
                       : "border-transparent bg-[#1b1f24] hover:bg-[#23282e]"
                   }`}
                 >

@@ -36,7 +36,7 @@ export function AiSectionCard({
   actions?: ReactNode;
 }) {
   return (
-    <div className="rounded-[28px] border border-white/12 bg-[rgba(17,17,17,0.9)] p-6 shadow-[var(--shadow-soft)]">
+    <div className="rounded-[28px] border border-white/12 bg-surface/90 p-6 shadow-[var(--shadow-soft)]">
       {title ? (
         <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
           <h2 className="text-lg font-black text-white">{title}</h2>

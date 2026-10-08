@@ -104,9 +104,9 @@ export function Dropdown({
           isOpen ? "bg-white" : "hover:border-slate-400"
         )}
         style={{
-          borderColor: isOpen ? "#FF3300" : "rgba(255, 51, 0, 0.2)",
-          backgroundColor: isOpen ? "#ffffff" : "#fff5f2",
-          boxShadow: isOpen ? "0 0 0 4px rgba(255, 51, 0, 0.08)" : undefined,
+          borderColor: isOpen ? "var(--kl-primary)" : "rgb(var(--kl-primary-rgb)/0.2)",
+          backgroundColor: isOpen ? "#ffffff" : "color-mix(in oklab, var(--kl-primary) 6%, white)",
+          boxShadow: isOpen ? "0 0 0 4px rgb(var(--kl-primary-rgb)/0.08)" : undefined,
         }}
         aria-expanded={isOpen}
         aria-haspopup="listbox"
@@ -117,7 +117,7 @@ export function Dropdown({
         <ChevronDown
           size={18}
           className={cn("shrink-0 transition-transform duration-200", isOpen && "rotate-180")}
-          style={{ color: isOpen ? "#FF3300" : "#6b7280" }}
+          style={{ color: isOpen ? "var(--kl-primary)" : "#6b7280" }}
         />
       </button>
  
@@ -125,8 +125,8 @@ export function Dropdown({
         <div
           className="absolute left-0 right-0 top-[calc(100%+8px)] z-30 origin-top rounded-xl border bg-white shadow-xl animate-in fade-in-0 zoom-in-95 duration-150"
           style={{
-            borderColor: "rgba(255, 51, 0, 0.16)",
-            boxShadow: "0 24px 48px -28px rgba(255, 51, 0, 0.15)",
+            borderColor: "rgb(var(--kl-primary-rgb)/0.16)",
+            boxShadow: "0 24px 48px -28px rgb(var(--kl-primary-rgb)/0.15)",
           }}
         >
           <div className="max-h-60 overflow-auto p-2">
@@ -149,14 +149,14 @@ export function Dropdown({
                        isSelected && "font-medium"
                     )}
                     style={{
-                      backgroundColor: isHighlighted ? "rgba(255, 51, 0, 0.08)" : "#ffffff",
-                      color: isHighlighted ? "#FF3300" : undefined,
+                      backgroundColor: isHighlighted ? "rgb(var(--kl-primary-rgb)/0.08)" : "#ffffff",
+                      color: isHighlighted ? "var(--kl-primary)" : undefined,
                     }}
                     role="option"
                     aria-selected={isSelected}
                   >
                     <span>{option.label}</span>
-                    {isSelected && <Check size={16} className="shrink-0" style={{ color: "#FF3300" }} />}
+                    {isSelected && <Check size={16} className="shrink-0" style={{ color: "var(--kl-primary)" }} />}
                   </button>
                 );
               })

@@ -3,6 +3,7 @@ import { ChevronDown, Menu, X, LayoutDashboard } from "lucide-react";
 import { useState } from "react";
 import { useAuth } from "../auth/AuthProvider";
 import { getHomePathForRole } from "../../services/authService";
+import { ThemeSwitcher } from "../../theme/ThemeSwitcher";
 
 type PublicHeaderTheme = "cream" | "dark";
 
@@ -13,6 +14,7 @@ export function PublicHeader({ theme = "cream", logoSize = "default" }: { theme?
   const [activeDropdown, setActiveDropdown] = useState<"marketer" | "influencer" | null>(null);
   const { user } = useAuth();
   const isDark = theme === "dark";
+  const themeSwitcherClass = isDark ? "" : "border-black/10 bg-white/60 text-slate-900 hover:bg-white";
 
   const navLinkClass = `rounded-full px-4 py-2 text-sm font-semibold ${
     isDark
@@ -113,6 +115,7 @@ export function PublicHeader({ theme = "cream", logoSize = "default" }: { theme?
           </div>
 
           <div className="hidden items-center gap-3 md:flex">
+            <ThemeSwitcher className={themeSwitcherClass} />
             {user ? (
               <Link
                 to={getHomePathForRole(user.role)}
@@ -139,15 +142,18 @@ export function PublicHeader({ theme = "cream", logoSize = "default" }: { theme?
             )}
           </div>
 
+          <div className="flex items-center gap-2 md:hidden">
+          <ThemeSwitcher className={themeSwitcherClass} />
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className={`rounded-2xl p-2 shadow-sm md:hidden ${
+            className={`rounded-2xl p-2 shadow-sm ${
               isDark ? "border border-white/15 bg-white/10 text-white" : "border border-black/10 bg-white/60"
             }`}
             aria-label="Mở menu"
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
+          </div>
         </div>
 
         {mobileMenuOpen && (

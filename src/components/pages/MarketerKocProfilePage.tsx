@@ -202,7 +202,7 @@ export function MarketerKocProfilePage() {
         {!loading && profile ? (
           <>
             <section className="relative isolate overflow-hidden rounded-[34px] border border-white/10 bg-[#050505] p-5 shadow-2xl shadow-black/35 sm:p-7 lg:p-8">
-              <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_10%_18%,rgba(255,90,31,0.24),transparent_28rem),radial-gradient(circle_at_88%_4%,rgba(20,184,166,0.18),transparent_30rem),linear-gradient(135deg,#050505_0%,#0b0b0b_56%,#032f2c_130%)]" />
+              <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_10%_18%,rgb(var(--kl-primary-rgb)/0.24),transparent_28rem),radial-gradient(circle_at_88%_4%,rgb(var(--kl-accent-rgb)/0.18),transparent_30rem),linear-gradient(135deg,var(--kl-base)_0%,#0b0b0b_56%,var(--kl-deep)_130%)]" />
               <div className="grid gap-7 lg:grid-cols-[1fr_340px]">
                 <div className="flex flex-col gap-6 md:flex-row">
                   <div className="relative h-32 w-32 shrink-0 overflow-hidden rounded-[28px] border border-white/15 bg-white/[0.06] shadow-2xl shadow-black/30">
@@ -214,7 +214,7 @@ export function MarketerKocProfilePage() {
                       </div>
                     )}
                     {profile.verified ? (
-                      <div className="absolute bottom-3 right-3 flex h-8 w-8 items-center justify-center rounded-full border-2 border-[#050505] bg-teal-500 text-white shadow-lg shadow-teal-500/25">
+                      <div className="absolute bottom-3 right-3 flex h-8 w-8 items-center justify-center rounded-full border-2 border-page bg-teal-500 text-white shadow-lg shadow-teal-500/25">
                         <BadgeCheck size={17} />
                       </div>
                     ) : null}

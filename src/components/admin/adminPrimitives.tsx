@@ -77,7 +77,7 @@ export function AdminSectionCard({
   className?: string;
 }) {
   return (
-    <section className={`overflow-hidden rounded-[28px] border border-white/12 bg-[rgba(17,17,17,0.9)] shadow-[var(--shadow-soft)] ${className}`.trim()}>
+    <section className={`overflow-hidden rounded-[28px] border border-white/12 bg-surface/90 shadow-[var(--shadow-soft)] ${className}`.trim()}>
       <div className="flex flex-col gap-4 border-b border-white/10 bg-white/[0.035] px-6 py-5 lg:flex-row lg:items-center lg:justify-between">
         <div>
           <h2 className="text-xl font-black tracking-tight text-white">{title}</h2>

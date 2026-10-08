@@ -171,7 +171,7 @@ export function MarketerWalletPage() {
         {/* Top Cards Grid */}
         <div className="grid gap-6 md:grid-cols-3">
           {/* Balance Card */}
-          <div className="relative overflow-hidden rounded-[32px] bg-gradient-to-br from-[#1E3B8E] to-[#12255C] p-8 text-white shadow-xl">
+          <div className="relative overflow-hidden rounded-[32px] bg-gradient-to-br from-secondary to-deep p-8 text-white shadow-xl">
             <div className="absolute right-0 top-0 translate-x-4 -translate-y-4 opacity-10">
               <Wallet size={200} />
             </div>
@@ -231,7 +231,7 @@ export function MarketerWalletPage() {
           <div className="lg:col-span-1 space-y-6">
             <div className="rounded-[32px] border border-slate-200 bg-white p-6 shadow-sm">
               <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
-                <Send size={18} className="text-[#1E3B8E]" />
+                <Send size={18} className="text-primary" />
                 Rút tiền về ngân hàng
               </h3>
 
@@ -297,7 +297,7 @@ export function MarketerWalletPage() {
                 <Button
                   type="submit"
                   disabled={submitting || (wallet?.balance || 0) < 50000}
-                  className="w-full bg-[#1E3B8E] hover:bg-[#12255C] text-white font-bold h-12 rounded-2xl shadow-md transition-all mt-4"
+                  className="w-full bg-secondary hover:bg-secondary-hover text-white font-bold h-12 rounded-2xl shadow-md transition-all mt-4"
                 >
                   {submitting ? "Đang xử lý..." : "Yêu cầu rút tiền"}
                 </Button>
