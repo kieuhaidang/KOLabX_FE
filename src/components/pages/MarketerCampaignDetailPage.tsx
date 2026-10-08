@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router";
 import { DashboardLayout } from "../layouts/DashboardLayout";
+import { API_BASE_URL } from "../../services/api";
 import {
   ArrowLeft,
   CheckCircle,
@@ -252,7 +253,7 @@ export function MarketerCampaignDetailPage() {
                       <div className="flex items-center gap-3">
                         <div className="w-12 h-12 bg-slate-100 rounded-full overflow-hidden flex-shrink-0">
                           <img 
-                            src={app.avatarUrl?.startsWith('http') ? app.avatarUrl : (app.avatarUrl ? `http://localhost:5000${app.avatarUrl}` : `https://api.dicebear.com/7.x/avataaars/svg?seed=${app.display_name}`)} 
+                            src={app.avatarUrl?.startsWith('http') ? app.avatarUrl : (app.avatarUrl ? `${API_BASE_URL}${app.avatarUrl}` : `https://api.dicebear.com/7.x/avataaars/svg?seed=${app.display_name}`)} 
                             alt={app.display_name} 
                             className="w-full h-full object-cover"
                           />
@@ -309,7 +310,7 @@ export function MarketerCampaignDetailPage() {
                       <div className="flex items-center gap-3">
                         <div className="w-10 h-10 bg-slate-100 rounded-full overflow-hidden">
                            <img 
-                             src={app.avatarUrl?.startsWith('http') ? app.avatarUrl : (app.avatarUrl ? `http://localhost:5000${app.avatarUrl}` : `https://api.dicebear.com/7.x/avataaars/svg?seed=${app.display_name}`)} 
+                             src={app.avatarUrl?.startsWith('http') ? app.avatarUrl : (app.avatarUrl ? `${API_BASE_URL}${app.avatarUrl}` : `https://api.dicebear.com/7.x/avataaars/svg?seed=${app.display_name}`)} 
                              alt={app.display_name} 
                              className="w-full h-full object-cover"
                            />
